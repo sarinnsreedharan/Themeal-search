@@ -5,7 +5,7 @@ import { useState } from "react";
 import Card from "./components/Card";
 
 function App() {
-  const [apiData, setAPiData] = useState({});
+  const [apiData, setAPiData] = useState([]);
 
   const updateDebounceText = debounce(async (text) => {
     try {
@@ -13,7 +13,7 @@ function App() {
         `https://www.themealdb.com/api/json/v1/1/search.php?s=${text}`,
       );
       if (response.data) {
-        setAPiData(response.data.meals[0]);
+        setAPiData(response.data.meals);
       }
     } catch (error) {
       console.log(error);
@@ -37,7 +37,12 @@ function App() {
   return (
     <div className="App">
       <input type="text" onChange={handleInputChange}></input>
-      {apiData !== null && <Card data={apiData} />}
+      <div className="container">
+        {apiData !== null &&
+          apiData.slice(0, 3).map((e, index) => {
+            return <Card data={e} key={index} />;
+          })}
+      </div>
     </div>
   );
 }
