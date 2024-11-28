@@ -28,6 +28,13 @@
   color: #61dafb;
 }
 
+input {
+  width: 500px;
+  margin-top: 10px;
+  border-radius: 5px;
+  height: 25px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,4 +42,7 @@
   to {
     transform: rotate(360deg);
   }
+}
+.greet-heading {
+  color: red;
 }
